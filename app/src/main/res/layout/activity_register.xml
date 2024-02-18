@@ -1,0 +1,98 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:gravity="center"
+    tools:context=".Login">
+
+    <ImageView
+        android:layout_width="wrap_content"
+        android:layout_height="300dp"
+        android:layout_marginLeft="10dp"
+
+
+        android:src="@drawable/study" />
+
+    <com.google.android.material.textfield.TextInputLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/UsernameRegister"
+
+            android:layout_width="297dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="40dp"
+
+            android:layout_marginLeft="46dp"
+            android:layout_marginBottom="15dp"
+            android:hint="Enter yout Username" />
+    </com.google.android.material.textfield.TextInputLayout>
+    <com.google.android.material.textfield.TextInputLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/EmailRegister"
+            android:layout_width="297dp"
+            android:layout_marginLeft="46dp"
+            android:layout_marginBottom="15dp"
+
+
+
+            android:layout_height="wrap_content"
+            android:layout_marginTop="130dp"
+
+
+            android:hint="Enter Your Email" />
+
+
+    </com.google.android.material.textfield.TextInputLayout>
+    <com.google.android.material.textfield.TextInputLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+    <com.google.android.material.textfield.TextInputEditText
+        android:id="@+id/passwordRegister"
+        android:layout_width="297dp"
+        android:layout_marginLeft="46dp"
+
+
+        android:layout_height="wrap_content"
+        android:layout_marginTop="130dp"
+
+
+        android:hint="Enter Your Password" />
+    </com.google.android.material.textfield.TextInputLayout>
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Do you Have an Account ?"
+        android:id="@+id/LoginNow"
+        android:layout_marginLeft="32dp"
+        android:layout_marginTop="6dp"
+        android:layout_marginBottom="7dp"
+        android:textStyle="italic"
+
+        />
+    <androidx.appcompat.widget.AppCompatButton
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/Register"
+        android:text="Submit"
+        android:layout_marginTop="16dp"
+        android:textColor="@android:color/white"
+        android:textStyle="bold"
+        android:background="@android:color/black" />
+
+
+
+
+
+
+
+
+</LinearLayout>
