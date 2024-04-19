@@ -8,6 +8,8 @@ import android.view.ViewGroup;
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.bumptech.glide.Glide;
+
 import java.util.LinkedList;
 
 public class MyAdapter extends RecyclerView.Adapter<ViewHolder> {
@@ -15,7 +17,7 @@ public class MyAdapter extends RecyclerView.Adapter<ViewHolder> {
     private LinkedList<Tasks> taches;
     private Context context;
     // Provide a suitable constructor (depends on the kind of dataset)
-    public MyAdapter(LinkedList<Tasks> taches) {
+    public MyAdapter(LinkedList<Tasks> taches, Context context) {
         this.taches = new LinkedList<Tasks>() ;
         this.taches.addAll(taches);
         this.context=context;
@@ -43,6 +45,8 @@ public class MyAdapter extends RecyclerView.Adapter<ViewHolder> {
         holder.title.setText(task.getTitle());
         holder.description.setText(task.getDescription());
         holder.deadline.setText( task.getDeadline());
+        holder.imageView.setTag(task.getImage());
+        Glide.with(context).load(task.getImage()).into(holder.imageView);
     }
 
     @Override

@@ -4,18 +4,28 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical">
+    <ImageView
+        android:layout_width="match_parent"
+        android:layout_height="300dp"
+        android:id="@+id/Image1234"
+        android:src="@drawable/study">
+
+    </ImageView>
 
    <TextView
        android:layout_width="match_parent"
        android:layout_height="wrap_content"
        android:text="hola"
        android:id="@+id/TitleTask"
-       android:gravity="center_horizontal"
+       android:layout_marginStart="10dp"
+       android:textSize="40dp"
 
-       android:layout_gravity="center"
-       android:background="@drawable/wave_1_"
+
+
+
+
        android:textColor="@color/black"
-       android:padding="80dp"
+
 
        ></TextView>
     <TextView
@@ -25,6 +35,7 @@
         android:id="@+id/DescriptionTask"
         android:gravity="center_vertical"
         android:layout_marginStart="10dp"
+        android:textSize="23dp"
 
         android:layout_gravity="center"
         ></TextView>
@@ -32,12 +43,27 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text="hola"
-        android:layout_marginStart="50dp"
+        android:layout_marginStart="10dp"
+
 
         android:id="@+id/DeadlineTask"
 
 
         android:layout_gravity="center"
         ></TextView>
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:text="Delete"
+        android:visibility="gone"
+        android:id="@+id/Delete"></Button>
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:text="Update"
+        android:visibility="gone"
+        android:id="@+id/Update"></Button>
 
 </LinearLayout>

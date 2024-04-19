@@ -37,12 +37,13 @@
         android:id="@+id/task"
         android:layout_width="match_parent"
         android:layout_height="277dp"
-        android:background="@drawable/wave_1_"
-        android:padding="58dp"
+        android:background="#e8e8e8e8"
+        android:padding="110dp"
         android:text="Tasks"
+        android:textStyle="normal"
         android:textAlignment="center"
-        android:textColor="@color/white"
-        android:textSize="28sp" />
+        android:textColor="@color/black"
+        android:textSize="48sp" />
     <Button
         android:id="@+id/floatingActionButton"
         android:layout_width="wrap_content"
@@ -50,6 +51,15 @@
         android:layout_gravity="center"
         android:clickable="true"
         android:text="Add Tasks"
+        android:visibility="gone"
+        app:srcCompat="@android:drawable/ic_input_add"/>
+    <Button
+        android:id="@+id/UpdateProfile12"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:clickable="true"
+        android:text="Update Profile"
         app:srcCompat="@android:drawable/ic_input_add"/>
 
     <ScrollView
@@ -59,11 +69,17 @@
       <androidx.recyclerview.widget.RecyclerView
           android:id="@+id/recyclerview"
           android:layout_width="match_parent"
-          android:layout_height="wrap_content" />
+          android:layout_height="wrap_content"
+         />
     </ScrollView>
 
   </LinearLayout>
 
+  <com.google.android.material.bottomnavigation.BottomNavigationView
+      android:layout_width="match_parent"
+      android:layout_height="match_parent"
+
+      />
 
 
 </LinearLayout>

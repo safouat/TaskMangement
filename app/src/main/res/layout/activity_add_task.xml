@@ -9,10 +9,10 @@
     tools:context=".Login">
 
     <ImageView
-        android:layout_width="wrap_content"
-        android:layout_height="300dp"
-        android:layout_marginLeft="10dp"
         android:id="@+id/ImageView"
+        android:layout_width="wrap_content"
+        android:layout_height="228dp"
+        android:layout_marginLeft="10dp"
 
 
         android:src="@drawable/study" />
@@ -39,16 +39,16 @@
         <com.google.android.material.textfield.TextInputEditText
             android:id="@+id/description1"
             android:layout_width="297dp"
+            android:layout_height="165dp"
             android:layout_marginLeft="46dp"
+
+
+            android:layout_marginTop="130dp"
             android:layout_marginBottom="15dp"
 
 
-
-            android:layout_height="wrap_content"
-            android:layout_marginTop="130dp"
-
-
             android:hint="Enter the description" />
+
 
 
     </com.google.android.material.textfield.TextInputLayout>

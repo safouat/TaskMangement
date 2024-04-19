@@ -63,10 +63,6 @@ public class AddTask extends AppCompatActivity {
         button.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                String titleValue = title.getText().toString();
-                String descriptionValue = description.getText().toString();
-                String deadlineValue = deadline.getText().toString();
-                AddData(titleValue, descriptionValue, deadlineValue);
                 uploadImage(image);
             }
         });
@@ -98,16 +94,52 @@ public class AddTask extends AppCompatActivity {
         }
     });
 
-    protected void AddData(String title, String description, String deadline) {
+
+    private void uploadImage(Uri file) {
+        if (file != null) {
+            // Upload selected image to Firebase Storage
+            StorageReference ref = storageReference.child("images/" + UUID.randomUUID().toString());
+
+            ref.putFile(file)
+                    .addOnSuccessListener(new OnSuccessListener<UploadTask.TaskSnapshot>() {
+                        @Override
+                        public void onSuccess(UploadTask.TaskSnapshot taskSnapshot) {
+                            // Image uploaded successfully, get the download URL
+                            ref.getDownloadUrl().addOnSuccessListener(new OnSuccessListener<Uri>() {
+                                @Override
+                                public void onSuccess(Uri downloadUri) {
+                                    // Save the download URL to Firestore
+                                    saveImageToFirestore(downloadUri);
+                                }
+                            });
+                        }
+                    })
+                    .addOnFailureListener(new OnFailureListener() {
+                        @Override
+                        public void onFailure(@NonNull Exception e) {
+                            Toast.makeText(AddTask.this, "Failed!" + e.getMessage(), Toast.LENGTH_SHORT).show();
+                        }
+                    });
+        } else {
+            Toast.makeText(AddTask.this, "No image selected", Toast.LENGTH_SHORT).show();
+        }
+    }
+
+    private void saveImageToFirestore(Uri downloadUri) {
+        // Create a new task object with the image download URL
+        String titleValue = title.getText().toString();
+        String descriptionValue = description.getText().toString();
+        String deadlineValue = deadline.getText().toString();
+
         Map<String, Object> data = new HashMap<>();
-        data.put("Title", title);
-        data.put("Description", description);
-        data.put("Deadline", deadline); // Corrected the spelling of "Deadline"
-        String rand = UUID.randomUUID().toString();
+        data.put("Title", titleValue);
+        data.put("Description", descriptionValue);
+        data.put("Deadline", deadlineValue);
+        data.put("Image", downloadUri.toString());
 
         // Add data to Firestore
         db.collection("Tasks")
-                .document(rand)
+                .document(UUID.randomUUID().toString())
                 .set(data)
                 .addOnCompleteListener(new OnCompleteListener<Void>() {
                     @Override
@@ -123,25 +155,5 @@ public class AddTask extends AppCompatActivity {
                         }
                     }
                 });
-    }
-
-    private void uploadImage(Uri file) {
-        if (file != null) {
-            // Upload selected image to Firebase Storage
-            StorageReference ref = storageReference.child("images/" + UUID.randomUUID().toString());
-            ref.putFile(file).addOnSuccessListener(new OnSuccessListener<UploadTask.TaskSnapshot>() {
-                @Override
-                public void onSuccess(UploadTask.TaskSnapshot taskSnapshot) {
-                    Toast.makeText(AddTask.this, "Image Uploaded!!", Toast.LENGTH_SHORT).show();
-                }
-            }).addOnFailureListener(new OnFailureListener() {
-                @Override
-                public void onFailure(@NonNull Exception e) {
-                    Toast.makeText(AddTask.this, "Failed!" + e.getMessage(), Toast.LENGTH_SHORT).show();
-                }
-            });
-        } else {
-            Toast.makeText(AddTask.this, "No image selected", Toast.LENGTH_SHORT).show();
-        }
     }
 }

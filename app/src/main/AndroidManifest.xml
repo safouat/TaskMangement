@@ -13,6 +13,32 @@
         android:theme="@style/Theme.MyApplication"
         tools:targetApi="31">
         <activity
+            android:name=".UpdateProfile"
+            android:exported="false" />
+        <activity
+            android:name=".jsdnjn"
+            android:exported="false" />
+        <activity
+            android:name=".updateTask"
+            android:exported="true">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+        <activity
+            android:name=".Update"
+            android:exported="false"
+            android:label="@string/title_activity_update"
+            android:theme="@style/Theme.MyApplication" />
+        <activity
+            android:name=".UpdateTask"
+            android:exported="false" />
+        <activity
+            android:name=".update_task"
+            android:exported="false" />
+        <activity
             android:name=".TaskDetail"
             android:exported="false" />
         <activity

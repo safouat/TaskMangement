@@ -6,10 +6,12 @@ public class Tasks {
     private String Title;
     private String Description;
     private String deadline;
-    public Tasks(String title,String Description,String deadline){
+    private String Image;
+    public Tasks(String title,String Description,String deadline,String Image){
         this.Title=title;
         this.Description=Description;
         this.deadline=deadline;
+        this.Image=Image;
     }
 
 
@@ -38,6 +40,13 @@ public class Tasks {
 
     public void setDeadline(String deadline) {
         this.deadline = deadline;
+    }
+
+    public String getImage() {
+        return Image;
+    }
+    public void setImage(String Image){
+        this.Image=Image;
     }
 
     // Getter and setter for category
