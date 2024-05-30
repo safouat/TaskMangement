@@ -10,6 +10,7 @@ import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.annotation.SuppressLint;
+import android.app.AlertDialog;
 import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;
@@ -55,6 +56,8 @@ public class updateTask extends AppCompatActivity {
     private static final String DESCRIPTION_FIELD = "Description";
     private static final String DEADLINE_FIELD = "Deadline";
     private static final String IMAGE_FIELD = "Image";
+    private AlertDialog progressDialog;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -128,6 +131,7 @@ public class updateTask extends AppCompatActivity {
     }
 
     private void UpdateTask(Uri downloadUri) {
+        showProgressDialog();
         FirebaseFirestore db = FirebaseFirestore.getInstance();
         Intent intent = getIntent();
         String clickedTitle = intent.getStringExtra("title");
@@ -164,6 +168,20 @@ public class updateTask extends AppCompatActivity {
                         showToast("Failed to retrieve task");
                     }
                 });
+    }
+    private void showProgressDialog() {
+        AlertDialog.Builder builder = new AlertDialog.Builder(this);
+        builder.setView(R.layout.progress_dialog);
+        builder.setCancelable(false); // Prevent closing the dialog by pressing back button
+        progressDialog = builder.create();
+        progressDialog.show();
+    }
+
+    private void hideProgressDialog() {
+
+        if (progressDialog != null && progressDialog.isShowing()) {
+            progressDialog.dismiss();
+        }
     }
     private void goToMainActivity() {
         Intent intent = new Intent(getApplicationContext(), MainActivity.class);

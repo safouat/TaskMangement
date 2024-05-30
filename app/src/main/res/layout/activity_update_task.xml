@@ -4,57 +4,82 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:padding="16dp"
     tools:context=".updateTask"
-    tools:ignore="MissingDefaultResource"
-    android:orientation="vertical">
+    tools:ignore="MissingDefaultResource">
+
     <ImageView
+        android:id="@+id/ImageView1"
         android:layout_width="wrap_content"
         android:layout_height="300dp"
-        android:layout_marginLeft="10dp"
-        android:id="@+id/ImageView1"
+        android:src="@drawable/study"
+        android:layout_gravity="center"
+        android:layout_marginTop="16dp" />
 
-
-        android:src="@drawable/study" />
-
-
-    <com.google.android.material.textfield.TextInputEditText
-        android:id="@+id/titleUpdate"
+    <com.google.android.material.textfield.TextInputLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:hint="Title"
-        android:text="Initial Title" />
+        android:layout_marginTop="24dp"
+        android:layout_marginLeft="16dp"
+        android:layout_marginRight="16dp">
 
-    <com.google.android.material.textfield.TextInputEditText
-        android:id="@+id/deadlineUpdate"
+        <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/titleUpdate"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="Title"
+            android:text="Initial Title" />
+    </com.google.android.material.textfield.TextInputLayout>
+
+    <com.google.android.material.textfield.TextInputLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:hint="Deadline"
-        android:text="Initial Deadline" />
+        android:layout_marginTop="16dp"
+        android:layout_marginLeft="16dp"
+        android:layout_marginRight="16dp">
 
-    <com.google.android.material.textfield.TextInputEditText
-        android:id="@+id/descriptionUpdate"
+        <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/deadlineUpdate"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="Deadline"
+            android:text="Initial Deadline" />
+    </com.google.android.material.textfield.TextInputLayout>
+
+    <com.google.android.material.textfield.TextInputLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:hint="Description"
-        android:text="Initial Description" />
+        android:layout_marginTop="16dp"
+        android:layout_marginLeft="16dp"
+        android:layout_marginRight="16dp">
+
+        <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/descriptionUpdate"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="Description"
+            android:text="Initial Description"
+            android:inputType="textMultiLine"
+            android:minHeight="100dp" />
+    </com.google.android.material.textfield.TextInputLayout>
+
     <com.google.android.material.button.MaterialButton
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
         android:id="@+id/selectImage1"
-        android:text="Select THe image"
-        android:textColor="@color/black"
-        android:layout_marginTop="10dp"
-        >
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Select The Image"
+        android:layout_marginTop="24dp"
+        android:layout_marginLeft="16dp"
+        android:layout_marginRight="16dp" />
 
-    </com.google.android.material.button.MaterialButton>
+    <com.google.android.material.button.MaterialButton
+        android:id="@+id/Update"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Update"
+        android:layout_marginTop="16dp"
+        android:layout_marginLeft="16dp"
+        android:layout_marginRight="16dp" />
 
-
-    <Button
-    android:layout_width="wrap_content"
-    android:layout_height="wrap_content"
-    android:text="update"
-    android:id="@+id/Update"
-    android:gravity="center">
-
-</Button>
 </LinearLayout>

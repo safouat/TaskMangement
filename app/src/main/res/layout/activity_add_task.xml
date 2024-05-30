@@ -5,98 +5,83 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    android:gravity="center"
+    android:gravity="center_horizontal"
     tools:context=".Login">
+
+    <TextView
+        android:id="@+id/text"
+        android:text="Add Task"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:fontFamily="@font/blackjack"
+        android:textSize="30sp"
+        android:layout_marginTop="16dp" />
 
     <ImageView
         android:id="@+id/ImageView"
         android:layout_width="wrap_content"
-        android:layout_height="228dp"
-        android:layout_marginLeft="10dp"
-
-
-        android:src="@drawable/study" />
+        android:layout_height="200dp"
+        android:src="@drawable/study"
+        android:layout_marginTop="16dp" />
 
     <com.google.android.material.textfield.TextInputLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content">
+        android:layout_height="wrap_content"
+        android:layout_marginTop="24dp"
+        android:layout_marginLeft="16dp"
+        android:layout_marginRight="16dp">
 
         <com.google.android.material.textfield.TextInputEditText
             android:id="@+id/title1"
-
-            android:layout_width="297dp"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginTop="40dp"
-
-            android:layout_marginLeft="46dp"
-            android:layout_marginBottom="15dp"
             android:hint="Enter the title" />
     </com.google.android.material.textfield.TextInputLayout>
+
     <com.google.android.material.textfield.TextInputLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content">
+        android:layout_height="wrap_content"
+        android:layout_marginTop="24dp"
+        android:layout_marginLeft="16dp"
+        android:layout_marginRight="16dp">
 
         <com.google.android.material.textfield.TextInputEditText
             android:id="@+id/description1"
-            android:layout_width="297dp"
-            android:layout_height="165dp"
-            android:layout_marginLeft="46dp"
-
-
-            android:layout_marginTop="130dp"
-            android:layout_marginBottom="15dp"
-
-
-            android:hint="Enter the description" />
-
-
-
-    </com.google.android.material.textfield.TextInputLayout>
-    <com.google.android.material.textfield.TextInputLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content">
-        <com.google.android.material.textfield.TextInputEditText
-            android:id="@+id/deadline1"
-            android:layout_width="297dp"
-            android:layout_marginLeft="46dp"
-
-
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginTop="130dp"
-
-
-            android:hint="Enter the deadline" />
+            android:hint="Enter the description"
+            android:inputType="textMultiLine"
+            android:minHeight="100dp" />
     </com.google.android.material.textfield.TextInputLayout>
+
     <com.google.android.material.button.MaterialButton
-        android:layout_width="wrap_content"
+        android:id="@+id/Deadline12"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:text="Select Deadline"
+        android:layout_marginTop="24dp"
+        android:layout_marginLeft="16dp"
+        android:layout_marginRight="16dp"
+        android:layout_marginBottom="16dp" />
+
+    <com.google.android.material.button.MaterialButton
         android:id="@+id/selectImage"
-        android:text="Select THe image"
-        android:textColor="@color/black"
-        android:layout_marginTop="10dp"
-       >
-
-    </com.google.android.material.button.MaterialButton>
-
-
-
-
-
-    <androidx.appcompat.widget.AppCompatButton
-        android:layout_width="wrap_content"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:text="Select Image"
+        android:layout_marginTop="8dp"
+        android:layout_marginLeft="16dp"
+        android:layout_marginRight="16dp"
+        android:layout_marginBottom="16dp" />
+
+    <com.google.android.material.button.MaterialButton
         android:id="@+id/Add"
-        android:text="Add"
-        android:layout_marginTop="16dp"
-        android:textColor="@android:color/white"
-        android:textStyle="bold"
-        android:background="@android:color/black" />
-
-
-
-
-
-
-
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Add Task"
+        android:layout_marginTop="8dp"
+        android:layout_marginLeft="16dp"
+        android:layout_marginRight="16dp"
+        android:layout_marginBottom="16dp" />
 
 </LinearLayout>

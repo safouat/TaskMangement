@@ -6,6 +6,7 @@ import androidx.activity.result.ActivityResult;
 import androidx.activity.result.ActivityResultCallback;
 import androidx.activity.result.ActivityResultLauncher;
 import androidx.activity.result.contract.ActivityResultContracts;
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.annotation.SuppressLint;
@@ -13,12 +14,15 @@ import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;
 import android.util.Log;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ImageView;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.bumptech.glide.Glide;
+import com.google.android.material.bottomnavigation.BottomNavigationView;
 import com.google.android.material.button.MaterialButton;
 import com.google.android.material.textfield.TextInputEditText;
 import com.google.common.net.InternetDomainName;
@@ -39,10 +43,13 @@ public class UpdateProfile extends AppCompatActivity {
     private Button saveU;
     private FirebaseFirestore db;
     private ImageView imageView;
+    private TextView text;
+
     private MaterialButton imageSelect;
     private Button button;
     private StorageReference storageReference;
     private Uri image;
+    BottomNavigationView bottomNavigationView;
 
 
 
@@ -56,6 +63,51 @@ public class UpdateProfile extends AppCompatActivity {
         setOnclickListener();
         FirebaseUser user1 = FirebaseAuth.getInstance().getCurrentUser();
         Log.d("TAG", user1.getEmail());
+        fetchUserImage();
+        fetchUserInfo();
+        bottomNavigationView = findViewById(R.id.bottom_navigation);
+
+        bottomNavigationView.setOnNavigationItemSelectedListener(new BottomNavigationView.OnNavigationItemSelectedListener() {
+            @SuppressLint("RestrictedApi")
+            @Override
+            public boolean onNavigationItemSelected(@NonNull MenuItem item) {
+                int itemId = item.getItemId();
+                if (itemId == R.id.menu_home) {
+                    // Handle click on home item
+                    startActivity(new Intent(UpdateProfile.this, MainActivity.class));
+                    return true;
+                } else if (itemId == R.id.menu_add) {
+                    db.collection("users").whereEqualTo("email", user1.getEmail()).whereEqualTo("role", 1).get().addOnSuccessListener(queryDocumentSnapshots -> {
+                        for (QueryDocumentSnapshot documentSnapshot : queryDocumentSnapshots) {
+                            // Assuming you have a setupButtonClick1() method to set up the button click
+                            // Show the button
+                            setupButtonClick1();
+                        }
+                    }).addOnFailureListener(e -> {
+                        MenuItem menuItem = bottomNavigationView.getMenu().findItem(R.id.menu_add);
+                        menuItem.setTitle("Notifications");
+                        menuItem.setIcon(R.drawable.settings); // Assuming 'settings' is the name of your drawable resource
+
+
+
+                        // Handle any errors here
+                        Log.e(TAG, "Error fetching users: " + e.getMessage());
+                    });
+                    return true;
+
+                }else if (itemId == R.id.menu_calendar) {
+                    // Handle click on profile item
+                    setupButtonClick3();
+                    return true;
+                } else if (itemId == R.id.menu_profile) {
+                    // Handle click on profile item
+                    setupButtonClick2(user1.getEmail().toString());
+                    return true;
+                } else {
+                    return false;
+                }
+            }
+        });
 
     }
     private void initializeView(){
@@ -67,6 +119,33 @@ public class UpdateProfile extends AppCompatActivity {
         imageView=findViewById(R.id.ImageView11);
         imageSelect=findViewById(R.id.selectImage11);
         storageReference = FirebaseStorage.getInstance().getReference();
+    }
+    private void setupButtonClick3() {
+
+
+
+        Intent intent = new Intent(getApplicationContext(), SaveTasksCalendarActivity.class);
+        startActivity(intent);
+        finish();
+
+    }
+    private void setupButtonClick2(String Email) {
+
+        Intent intent = new Intent(getApplicationContext(), UpdateProfile.class);
+
+
+        startActivity(intent);
+        finish();
+
+    }
+    private void setupButtonClick1() {
+
+
+
+        Intent intent = new Intent(getApplicationContext(), AddTask.class);
+        startActivity(intent);
+        finish();
+
     }
     private void setOnclickListener(){
         saveE.setOnClickListener(new View.OnClickListener() {
@@ -229,6 +308,36 @@ public class UpdateProfile extends AppCompatActivity {
                     }
                 }
         );
+
+    }
+    @SuppressLint("RestrictedApi")
+    private void fetchUserImage() {
+        db = FirebaseFirestore.getInstance();
+        String username = UserName.getText().toString(); // Ensure UserName is initialized and contains the correct value
+        db.collection("users")
+                .whereEqualTo("username", getIntent().getStringExtra("username"))
+                .get()
+                .addOnCompleteListener(user -> {
+                    if (user.isSuccessful()) {
+                        for (QueryDocumentSnapshot document : user.getResult()) {
+                            String image12 = document.getString("image");
+                            if (image12 != null && !image12.isEmpty()) { // Check if image12 is not null and not empty
+                                Glide.with(UpdateProfile.this).load(image12).into(imageView);
+                            } else {
+                                showToast("No user image found");
+                            }
+                        }
+                    } else {
+                        Log.d(TAG, "Error getting documents: ", user.getException());
+                        showToast("Failed to retrieve user data");
+                    }
+                });
+    }
+
+    private void fetchUserInfo(){
+        Intent intent=getIntent();
+        UserName.setText(intent.getStringExtra("username"));
+        Email.setText(intent.getStringExtra("email"));
 
     }
 

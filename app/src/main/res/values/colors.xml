@@ -2,4 +2,10 @@
 <resources>
     <color name="black">#FF000000</color>
     <color name="white">#FFFFFFFF</color>
+    <color name="bottom_navigation_icon_color">#FF0000</color> <!-- Adjust color as needed -->
+    <color name="bottom_navigation_text_color">#000000</color>
+    <color name="bottom_navigation_blue">#6E21F3</color> <!-- Adjust color as needed -->
+    <color name="bottom_navigation_selected_color">#FF5722</color> <!-- Color for the selected (first) item -->
+    <!-- Adjust color as needed -->
+
 </resources>

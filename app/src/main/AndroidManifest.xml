@@ -2,6 +2,8 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools">
 
+    <uses-permission android:name="android.permission.POST_NOTIFICATIONS" />
+
     <application
         android:allowBackup="true"
         android:dataExtractionRules="@xml/data_extraction_rules"
@@ -13,39 +15,37 @@
         android:theme="@style/Theme.MyApplication"
         tools:targetApi="31">
         <activity
+            android:name=".edit_viewevent"
+            android:exported="false" />
+        <activity
+            android:name=".weekView"
+            android:exported="false" />
+        <activity
+            android:name=".calendar_cell"
+            android:exported="false" />
+        <activity
+            android:name=".Cell_event"
+            android:exported="false" />
+        <activity
+            android:name=".Calendar_Event"
+            android:exported="false"
+            android:label="@string/title_activity_calendar_event"
+            android:theme="@style/Theme.MyApplication" />
+        <activity
+            android:name=".SaveTasksCalendarActivity"
+            android:exported="false" />
+        <activity
+            android:name=".CalendarMainActivity"
+            android:exported="false" />
+        <activity
             android:name=".UpdateProfile"
             android:exported="false" />
         <activity
-            android:name=".jsdnjn"
-            android:exported="false" />
-        <activity
             android:name=".updateTask"
-            android:exported="true">
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
-
-                <category android:name="android.intent.category.LAUNCHER" />
-            </intent-filter>
-        </activity>
-        <activity
-            android:name=".Update"
-            android:exported="false"
-            android:label="@string/title_activity_update"
-            android:theme="@style/Theme.MyApplication" />
-        <activity
-            android:name=".UpdateTask"
-            android:exported="false" />
-        <activity
-            android:name=".update_task"
             android:exported="false" />
         <activity
             android:name=".TaskDetail"
             android:exported="false" />
-        <activity
-            android:name=".TaskDetails"
-            android:exported="false"
-            android:label="@string/title_activity_task_details"
-            android:theme="@style/Theme.MyApplication" />
         <activity
             android:name=".AddTask"
             android:exported="false" />
@@ -58,16 +58,6 @@
             android:name=".task_item_layout"
             android:exported="false"
             android:label="@string/title_activity_task_item_layout"
-            android:theme="@style/Theme.MyApplication" />
-        <activity
-            android:name=".ProfileActivity"
-            android:exported="false"
-            android:label="@string/title_activity_profile"
-            android:theme="@style/Theme.MyApplication" />
-        <activity
-            android:name=".HomeActivity"
-            android:exported="false"
-            android:label="@string/title_activity_home"
             android:theme="@style/Theme.MyApplication" />
         <activity
             android:name=".Register"

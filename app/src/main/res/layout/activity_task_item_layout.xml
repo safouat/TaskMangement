@@ -1,24 +1,30 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:layout_width="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="400dp"
     android:layout_height="wrap_content"
     android:orientation="horizontal"
+    android:layout_marginLeft="6.5dp"
+    android:layout_marginTop="12dp"
+    android:background="@drawable/customborder"
     >
+
     <ImageView
         android:id="@+id/image124"
-        android:layout_width="70dp"
-        android:layout_height="70dp"
-        android:layout_gravity="center"
-        android:layout_marginStart="30dp"
-        android:src="@drawable/study"/>
+        android:layout_width="112dp"
+        android:layout_height="match_parent"
+
+
+        android:src="@drawable/study" />
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        >
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="vertical">
-
-
-
-
 
         <TextView
             android:id="@+id/title"
@@ -26,6 +32,7 @@
             android:layout_height="wrap_content"
             android:text="Title"
             android:textSize="28sp"/>
+
 
 
         <TextView
@@ -42,5 +49,37 @@
             android:text="le 12/10/24 à 10:00:00 PM"
             android:textSize="16sp"/>
     </LinearLayout>
+
+        <Button
+            android:id="@+id/Share"
+            android:layout_width="40dp"
+            android:layout_height="40dp"
+            android:layout_marginLeft="-110px"
+
+            android:background="@drawable/share"
+            ></Button>
+
+
+
+        <Button
+            android:id="@+id/Done"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="-250px"
+            android:layout_marginTop="250px"
+            android:text="Done"></Button>
+
+        <Button
+            android:id="@+id/Done1"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="-470px"
+            android:layout_marginTop="250px"
+            android:text="Save"></Button>
+
+
+
+    </LinearLayout>
+
 </LinearLayout>
 

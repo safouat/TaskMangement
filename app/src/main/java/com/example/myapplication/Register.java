@@ -77,6 +77,7 @@ public class Register extends AppCompatActivity {
                                         Map<String, Object> userData = new HashMap<>();
                                         userData.put("username", usernameValue);
                                         userData.put("email", emailValue);
+                                        userData.put("role",1);
 
                                         db.collection("users").document(user.getUid())
                                                 .set(userData)

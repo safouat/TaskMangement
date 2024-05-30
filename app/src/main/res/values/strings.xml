@@ -48,4 +48,5 @@
     <string name="title_activity_task_item_layout">task_item_layout</string>
     <string name="title_activity_task_details">TaskDetails</string>
     <string name="title_activity_update">Update</string>
+    <string name="title_activity_calendar_event">Calendar_Event</string>
 </resources>
